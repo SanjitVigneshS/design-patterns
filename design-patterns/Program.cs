@@ -7,10 +7,29 @@ namespace design_patterns
     {
         static void Main(string[] args)
         {
+            TestSingleton();
+            TestFactory();
+        }
+
+        static void TestSingleton()
+        {
+            Console.WriteLine("Singleton Test.......");
             Singleton singleton = Singleton.GetInstance();
-            //singleton.
             singleton.LogMessage("Hello");
-            Console.ReadLine();
+        }
+
+        static void TestFactory()
+        {
+            Console.WriteLine("Factory Test.......");
+            ToolFactory toolFactory = new BrushFactory();
+
+            Tool tool = toolFactory.GetTool();
+            tool.Draw();
+
+            toolFactory = new PencilFactory();
+
+            tool = toolFactory.GetTool();
+            tool.Draw();
         }
     }
 }
